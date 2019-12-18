@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Regain Control.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/08/Take-control-of-your-e-mail/" itemprop="url">Take control of your e-mail</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-08T17:13:02.000Z" itemprop="datePublished">Nov 8 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            11 minutes read (About 1600 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>When it’s time to talk about regaining control of personal data, e-mail are on the top of my list.</p>
+<p>I have never trusted Google to deal with my data (my photos, my e-mail, or my documents). Even if I admit Gmail offer a very convenient service and a wonderful anti-spam (thanks to all the data shared by <a href="https://venturebeat.com/2019/02/06/gmail-is-now-blocking-100-million-more-spam-emails-a-day-thanks-to-tensorflow/" target="_blank" rel="noopener">1.5 billion active users and their 10 millions of spam and malicious emails received every minute</a>).</p>
+<p>When your business relies on digital exchanges, your e-mail provider must be very reliable. A chance that the Simple Mail Transfer Protocol is robust, allowing your precious e-mail to be retransmitted in case of outage of a gateway. In fact, a gateway could be <a href="https://tools.ietf.org/html/rfc5321#section-4.5.4.1" target="_blank" rel="noopener" title="4-5 days recommended in RFC 5321">off-line during days</a> before the e-mail would be returned to its sender.</p>
+<p>By the time, in addition to SMTP, other protocols and standards has been added to provide a complete e-mail service:</p>
+<ul>
+<li>IMAP (used by your client to retrieve e-mail from the server)</li>
+<li>TLS/SSL (for security and privacy)</li>
+<li>SPF, DKIM and DMARC (to authenticate senders and fight against phishing and spam)</li>
+<li>Sieve (to define filtering rules)</li>
+</ul>
+<h2 id="Hey-I-don’t-want-to-build-a-rocket-I-just-need-an-e-mail-service-that-respect-my-privacy"><a href="#Hey-I-don’t-want-to-build-a-rocket-I-just-need-an-e-mail-service-that-respect-my-privacy" class="headerlink" title="Hey! I don’t want to build a rocket. I just need an e-mail service that respect my privacy."></a>Hey! I don’t want to build a rocket. I just need an e-mail service that respect my privacy.</h2><p>Answer is simple: rely on a service provided by a recognized European entity (respecting <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener" title="General Data Protection Regulation">GDPR</a>, which is normally mandatory). In short, you can trust <a href="https://www.ovh.ie/emails/" target="_blank" rel="noopener">OVHcloud e-mail solutions</a>.</p>
+<h1 id="Let’s-do-it"><a href="#Let’s-do-it" class="headerlink" title="Let’s do it!"></a>Let’s do it!</h1><p>For fun or if your needs are a bit specific, you can also do it yourself.</p>
+<p>In my all life, I have built 3 times a complete e-mailing system for my personal use. Obsolescence of the underlying Debian system, and therefore security, was the main driver. This last time, I defined these requirements:</p>
+<ul>
+<li>Operating System abstraction (ie I can easily upgrade/change the OS without risking a major impact on the e-mail application stack)</li>
+<li>Sustainable Open-Source community supporting the entire stack</li>
+<li>Hardware abstraction</li>
+</ul>
+<h2 id="Docker-to-the-rescue"><a href="#Docker-to-the-rescue" class="headerlink" title="Docker to the rescue"></a>Docker to the rescue</h2><p>Looking for a stateless e-mail stack, I have rapidly identified <a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver</a> as a good candidate. Anti-spam is based on <a href="https://spamassassin.apache.org" target="_blank" rel="noopener">SpamAssassin</a> (a personal choice based on my experience) and configuration is very simple (no web interface, no additional dabatase, <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" rel="noopener" title="Keep It Simple, Stupid">KISS</a>)).<br>If <a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver</a> does not fit you, have a look at those alternatives: <a href="https://github.com/mailcow/mailcow-dockerized" target="_blank" rel="noopener">mailcow</a> or <a href="https://github.com/Mailu/Mailu" target="_blank" rel="noopener">Mailu</a>.</p>
+<p>This (almost) stateless approach enables to easily upgrade or downgrade the VM (vertical scaling).</p>
+<h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h3><h4 id="Basic-configuration"><a href="#Basic-configuration" class="headerlink" title="Basic configuration"></a>Basic configuration</h4><p>1 CPU<br>2 GB RAM + Swap (or 3 GB if you don’t want to use swap)<br>8 GB Storage for System and Container (don’t forget to add the Swap size if you need it)<br>+ Storage for e-mail accounts</p>
+<blockquote class="colorquote info"><p>ClamAV is memory consuming (more than 800MB for the virus signature database). If you don’t run ClamAV (for example if you use another ant-virus or gateway), you should be able to run with 512MB of RAM. </p>
+</blockquote>
+
+<h4 id="Advanced-configuration"><a href="#Advanced-configuration" class="headerlink" title="Advanced configuration"></a>Advanced configuration</h4><p>For e-mail accounts storage, my first thought was to use Object Storage but I was not able to find any Open-Source IMAP server. Then I have decided to go with a scalalable Block Storage solution (like Ceph-based OVH Block Storage).</p>
+<p>For SMTP output, IP reputation is very important. Default VM’s IP seems not to be a convenient choice. My preference went to ‘Static’ IP (like an OVH Fail-Over IP). Another advantage is I could decide to replace the VM chile keeping the same IP.</p>
+<h3 id="Step-by-step-using-OpenStack-based-OVH-Public-Cloud"><a href="#Step-by-step-using-OpenStack-based-OVH-Public-Cloud" class="headerlink" title="Step by step, using OpenStack-based OVH Public Cloud"></a>Step by step, using OpenStack-based OVH Public Cloud</h3><p>I assume a new Public Cloud Project has been created, and you have downloaded the OpenRC environment file.<br>First, load the environment: <code>source openrc.sh</code>.</p>
+<h4 id="1-Instanciate-a-VM"><a href="#1-Instanciate-a-VM" class="headerlink" title="1. Instanciate a VM"></a>1. Instanciate a VM</h4><p>If needed, push your SSH public key to OpenStack region <code>openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey</code></p>
+<p>We can not purchase any IP without a running instance. So we will instanciate the VM without any OS:</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Download cloudinit script that will help later to setup our VM</span></span><br><span class="line">curl -fsSL https://raw.githubusercontent.com/gmasse/emailgw/master/cloudinit</span><br><span class="line"><span class="hljs-comment"># Instanciate the VM</span></span><br><span class="line">openstack server create --flavor s1-4 --key-name mykey --user-data cloudinit --image <span class="hljs-string">"rescue-ovh"</span> email</span><br></pre></td></tr></table></figure>
+<blockquote class="colorquote info"><p>The <a href="https://github.com/gmasse/emailgw/blob/master/cloudinit" target="_blank" rel="noopener">cloudinit script</a> will update the system, install packages for <a href="https://www.docker.com" target="_blank" rel="noopener">docker</a> and <a href="https://nlnetlabs.nl/projects/unbound" target="_blank" rel="noopener" title="a dns resolver">unbound</a>, and configure network with local dns and the static IP.</p>
+</blockquote>
+
+
+<h4 id="2-Purchase-a-‘Static’-IP"><a href="#2-Purchase-a-‘Static’-IP" class="headerlink" title="2. Purchase a ‘Static’ IP"></a>2. Purchase a ‘Static’ IP</h4><p>Using Customer Interface:<br><img src="https://github.com/ovh/docs/raw/develop/pages/platform/public-cloud/buy_failover_ip/images/buyfailoverip1.png" alt="Screenshot"></p>
+<p>And assign it to the VM named <code>email</code>.</p>
+<h4 id="3-Add-Block-Storage"><a href="#3-Add-Block-Storage" class="headerlink" title="3. Add Block Storage"></a>3. Add Block Storage</h4><p>There are two types of block storage: classic and high-speed (<code>openstack volume type list</code>). Performances of classic storage seems acceptable for an entry level mail gateway.</p>
+<p>Create a 10GB volume and attache the volume to the instance:</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Create the volume</span></span><br><span class="line">openstack volume create --<span class="hljs-built_in">type</span> classic --size 10 email_storage</span><br><span class="line"><span class="hljs-comment"># Attach the volume to the VM</span></span><br><span class="line">openstack server add volume email email_storage --device=/dev/sdb</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="4-Build-the-VM"><a href="#4-Build-the-VM" class="headerlink" title="4. Build the VM"></a>4. Build the VM</h4><p>Pass the Static IP as meta-data (replace <code>1.2.3.4</code> with your own IP) and build the VM:</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">openstack server rebuild --property static_ip=1.2.3.4 --image <span class="hljs-string">"Ubuntu 18.04"</span> email</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="5-Setup-Storage"><a href="#5-Setup-Storage" class="headerlink" title="5. Setup Storage"></a>5. Setup Storage</h4><p>Connect to the VM: <code>ssh ubuntu@1.2.3.4</code></p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># LVM setup</span></span><br><span class="line">sudo pvcreate /dev/sdb</span><br><span class="line">sudo vgcreate vg-mail /dev/sdb</span><br><span class="line">sudo lvcreate -n lv-mail -l 100%FREE vg-mail</span><br><span class="line"><span class="hljs-comment"># Format filesystem</span></span><br><span class="line">sudo mkfs -t ext4 -L MAIL -E nodiscard /dev/vg-mail/lv-mail</span><br><span class="line"><span class="hljs-comment"># Mount it</span></span><br><span class="line">sudo mkdir -p /mnt/mail</span><br><span class="line"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">'LABEL=MAIL\t/mnt/mail\text4\tdefaults,noatime\t0 2'</span> | sudo tee -a /etc/fstab</span><br><span class="line">sudo mount /mnt/mail</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="6-Configure-local-DNS-resolver"><a href="#6-Configure-local-DNS-resolver" class="headerlink" title="6. Configure local DNS resolver"></a>6. Configure local DNS resolver</h4><blockquote class="colorquote info"><p>Many Anti-spam blacklist systems rely on DNS, some of those blacklists rate-limit can be exceeded when using mutualized DNS resolver (your provider or global anycast like <a href="https://www.quad9.net" target="_blank" rel="noopener">Quad9</a>). Using your own local resolver with your Static IP would solve this issue.</p>
+</blockquote>
+
+<p>Configure <a href="https://nlnetlabs.nl/projects/unbound" target="_blank" rel="noopener">unbound</a> to allow local resolution and use the Static IP for external request (replace <code>1.2.3.4</code> with your own IP):</p>
+<figure class="highlight plaintext hljs"><figcaption><span>/etc/unbound/unbound.conf.d/docker.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">    interface: 127.0.0.1</span><br><span class="line">    interface: ::1</span><br><span class="line">    interface: 172.17.0.1</span><br><span class="line">    access-control: 172.16.0.0/12 allow</span><br><span class="line">    outgoing-interface: 1.2.3.4</span><br></pre></td></tr></table></figure>
+<p>Reload service: <code>sudo systemctl reload unbound</code>.</p>
+<blockquote class="colorquote success"><p>To test your local DNS resolver, you can use a DNS reflector (like <a href="https://dnsparanoia.com/debug_dns_with_reflector.php" target="_blank" rel="noopener">DNS Paranoia</a>) and check it answers your Static IP:</p>
+</blockquote>
+<figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> dig +noall +answer reflect.dnsp.co</span></span><br><span class="line">reflect.dnsp.co.	0	IN	A	1.2.3.4</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-Generate-Let’s-encrypt-SSL-certificate"><a href="#7-Generate-Let’s-encrypt-SSL-certificate" class="headerlink" title="7. Generate Let’s encrypt SSL certificate"></a>7. Generate Let’s encrypt SSL certificate</h4><p>To generate certificate, run:</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo docker run --rm -ti -v <span class="hljs-variable">$PWD</span>/<span class="hljs-built_in">log</span>/:/var/<span class="hljs-built_in">log</span>/letsencrypt/ -v <span class="hljs-variable">$PWD</span>/etc/:/etc/letsencrypt/ -p 80:80 certbot/certbot certonly --standalone -d mail.mydomain.com</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="9-Configure-firewall"><a href="#9-Configure-firewall" class="headerlink" title="9. Configure firewall"></a>9. Configure firewall</h4><p>Review the <a href="https://github.com/gmasse/emailgw/tree/master/etc/iptables" target="_blank" rel="noopener">rules</a>, then copy and apply:</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo curl -o /etc/iptables/rules.v4 https://raw.githubusercontent.com/gmasse/emailgw/master/etc/iptables/rules.v4</span><br><span class="line">sudo curl -o /etc/iptables/rules.v6 https://raw.githubusercontent.com/gmasse/emailgw/master/etc/iptables/rules.v6</span><br><span class="line">sudo ip6tables-restore --noflush &lt; /etc/iptables/rules.v6</span><br><span class="line">sudo iptables-restore --noflush &lt; /etc/iptables/rules.v4</span><br></pre></td></tr></table></figure>
+
+<blockquote class="colorquote warning"><p>Do not restart the service <code>iptables-persistent</code> because it will overwrite the Docker default rules and prevent from accessing the container.</p>
+</blockquote>
+
+
+<h4 id="10-Configure-the-container"><a href="#10-Configure-the-container" class="headerlink" title="10. Configure the container"></a>10. Configure the container</h4><p>Download the configuration files:</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo mkdir /mnt/mail/docker-mailserver</span><br><span class="line">sudo chown ubuntu:ubuntu /mnt/mail/docker-mailserver</span><br><span class="line">ln -s /mnt/mail/docker-mailserver/ ~/docker-mailserver</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/docker-mailserver/</span><br><span class="line">curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/docker-compose.yml</span><br><span class="line">curl -o env-mailserver https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/env-mailserver</span><br></pre></td></tr></table></figure>
+<p>Update <code>env-mailserver</code> according to your setup (<code>OVERRIDE_HOSTNAME</code> and <code>POSTMASTER_ADDRESS</code>).</p>
+<blockquote class="colorquote info"><p>By default, <a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver</a> uses <code>Maildir</code> format for mailboxes. This is a very common format where each e-mail is stored in one file. For better performances and/or to use <a href="https://wiki.dovecot.org/MailboxFormat/dbox#Alternate_storage" target="_blank" rel="noopener">Alternate storage</a>, you can rely on Dovecot <code>sdbox</code> and <code>mdbox</code> (supported since the merge of my <a href="https://github.com/tomav/docker-mailserver/pull/1314" target="_blank" rel="noopener">pull request</a>).</p>
+</blockquote>
+
+<p>Update and save <code>.env</code> file:</p>
+<figure class="highlight plaintext hljs"><figcaption><span>~/docker-mailserver/.env</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HOSTNAME=mail</span><br><span class="line">DOMAINNAME=mydomain.com</span><br><span class="line">CONTAINER_NAME=mail</span><br><span class="line">EXTERNAL_IP=1.2.3.4</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="11-Run-it"><a href="#11-Run-it" class="headerlink" title="11. Run it"></a>11. Run it</h4><p>Create at least one e-mail account: <code>sudo ./setup.sh email add &lt;user@domain&gt; [&lt;password&gt;]</code><br>Then launch the container: <code>sudo docker-compose up -d mail</code></p>
+<h4 id="12-To-go-further"><a href="#12-To-go-further" class="headerlink" title="12. To go further"></a>12. To go further</h4><p><a href="https://github.com/tomav/docker-mailserver#generate-dkim-keys" target="_blank" rel="noopener">Generate DKIM keys</a><br><a href="https://github.com/tomav/docker-mailserver#restart-and-update-the-container" target="_blank" rel="noopener">Update the container</a></p>
+<h2 id="To-be-continued…"><a href="#To-be-continued…" class="headerlink" title="To be continued…"></a>To be continued…</h2><p>Let’s encrypt SSL auto-renew<br>Coudinit: add storage and dns configuration<br>Tiered storage, using Dovecot Alternate storage feature: recent emails on high-speed block storage, archives on normal speed<br>Volume (auto?) resize<br>IPv6<br>E-mail configuration auto-discover</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 Germain Masse&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+</body>
+</html>
