@@ -113,7 +113,7 @@
 </blockquote>
 
 <h4 id="Advanced-configuration"><a href="#Advanced-configuration" class="headerlink" title="Advanced configuration"></a>Advanced configuration</h4><p>For e-mail accounts storage, my first thought was to use Object Storage but I was not able to find any Open-Source IMAP server. Then I have decided to go with a scalalable Block Storage solution (like Ceph-based OVH Block Storage).</p>
-<p>For SMTP output, IP reputation is very important. Default VM’s IP seems not to be a convenient choice. My preference went to ‘Static’ IP (like an OVH Fail-Over IP). Another advantage is I could decide to replace the VM chile keeping the same IP.</p>
+<p>For SMTP output, IP reputation is very important. Default VM’s IP seems not to be a convenient choice. My preference went to ‘Static’ IP (like an OVH Fail-Over IP). Another advantage is I could decide to replace the VM while keeping the same IP.</p>
 <h3 id="Step-by-step-using-OpenStack-based-OVH-Public-Cloud"><a href="#Step-by-step-using-OpenStack-based-OVH-Public-Cloud" class="headerlink" title="Step by step, using OpenStack-based OVH Public Cloud"></a>Step by step, using OpenStack-based OVH Public Cloud</h3><p>I assume a new Public Cloud Project has been created, and you have downloaded the OpenRC environment file.<br>First, load the environment: <code>source openrc.sh</code>.</p>
 <h4 id="1-Instanciate-a-VM"><a href="#1-Instanciate-a-VM" class="headerlink" title="1. Instanciate a VM"></a>1. Instanciate a VM</h4><p>If needed, push your SSH public key to OpenStack region <code>openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey</code></p>
 <p>We can not purchase any IP without a running instance. So we will instanciate the VM without any OS:</p>
