@@ -87,12 +87,40 @@ include:
 exclude:
 ignore:
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: minos
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: ''
+# Website's icon url.
+favicon: /favicon.png
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: minos
+open_graph:
+  twitter_id: GegAtOvh
+  twitter_site: https://twitter.com/gegatovh
+logo:
+    text: Regain Control.
+article:
+  readtime: true
+  highlight: atom-one-light
+menu:
+  Archives: /archives
+  About: /about
+search:
+  type: insight
+toc: false
+plugins:
+  clipboard: true
+navbar_links:
+  LinkedIn:
+    icon: fab fa-linkedin
+    url: https://www.linkedin.com/in/germainmasse
+  Twitter:
+    icon: fab fa-twitter
+    url: https://twitter.com/gegatovh
+  GitHub:
+    icon: fab fa-github
+    url: https://github.com/gmasse
