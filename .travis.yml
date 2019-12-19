@@ -1,18 +1,24 @@
 sudo: false
 language: node_js
 node_js:
-  - 10 # use nodejs v10 LTS
+- 10
 cache: npm
 branches:
   only:
-    - master # build master branch only
+  - master
 script:
-  - hexo generate # generate static files
+- hexo generate
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: $GH_TOKEN
+  github-token: "$GH_TOKEN"
   keep-history: true
   on:
     branch: master
   local-dir: public
+notifications:
+  pushover:
+    api_key:
+      secure: Z9LHvSux9BHOYVoNsPKkwes2ReUSGtUAKzPTO2rrSFqq3Tcuzj4JXl0TtdNqecIXQNYiLJp89k9+cE/fnNOnm8IuYwbPKNjd3icx7pPQJHktkqCP3CS6XRQJ52cOb17ZUhBwaQom31QTtqNTgLqJgiKIiosZLA7ZCXuYFFDLA7rdfUqPiT85AZ8MEsOasWa0uXRtISzkzqywXBLdiRaF/gEsfzUJxLecN+ZFEq33vEVNdEnRwbZGPVpv1baYcoayCO2Zm1uZOtFaeve3oiKWe/xKc6b4HRJP+ePbrPeSrOKHmOhKbknFJwLnDLNyfC2lUhJogT+/t5HRTTqx8xc4Ziy4n6OAPRSSTE+JZ8YR7IrMCRqR44VgRrmyFqU1swmSjbMuZoACNma7H8gbS5kCHB1thzPhffkuFBg2Rd4kaymp7vMSGdEsFGJxWR6lWo6K9sbRtxC+SaLQedFZD1tMZUxTRpY02mz3MhGJMcjbqC46edmDGwX1ZZPApjr0OEj1kvKr4hCEUAwY1VbbnYzPiQha/GkTIsjvfAXWnaDQ/YVz47ANus9UjkQy8qL9YKqvzs7LqWuz3dmE3hQJIiGvZB0ZOF01f2nu34v7qJCr7owxTKSqWuEZqIIFLJnuS+UB/eH+iG4paHtYCBlIwUzBpjOzbWAhw5zWLQTlNKuaCYA=
+    users:
+      secure: FvqW2+ksFm9N1VAdphesRaszreoTiirVNDfQyNldRq9Pduut0M9fihy3R8/MkCgY2Wx4EWoeB+CWe0KS3yPFL+QzlYRzKjQ5ZuZ4cumLlVNOjtpzopNrkLna7a2k4YRUYy3YxoIhZ2m518mlaUxQzvovNxbkT4IRaEq++DOYwtzYZVb0EAd0HHK4lRsltkLMv23kiTTK6ezsX8YZZzirlXHY1LrhvqyfM6oHN64UpziwinTApurv6sbwh7fRqBUyTgdVGM6H4lC/VPMOzrExGQuffQn5TnBr9T9+t/pB2I3eAzu9yQAQi28T/gVTls0mt3HYiLun/iNDRzcZC+hPwtDCsnpAOCjlRh22Ogysp5TYspm6yrFJI2uMg/GVJyKhYE7qr6hqNwGP29koCOPoVHp1bcNSFqoPVsTvmbhhOf8keJYJUbrYiTFe3aZ+0+DzX9rnTqSLElaDWKJng/Jq989SvDiTQ2uJSOipozqwKhrrkXpJmsLL/hVe7ezfspjDA0gNR/cK2/qjt+rX8b6ZdoClLqTZs2PX34F38fs1WrF/zo43ADRLAWWMFyCQBmtIk9d5mKJj7vrrlyf4ygNoRVjjWSotRWmobFkg6I2MS4jyYOTxJeF0QjJKhJbYAFrSl0AUPkGDunI4u/X4jyPk441TEHSAeaOitDRxhJMR+8M=
