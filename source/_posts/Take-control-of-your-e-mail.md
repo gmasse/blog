@@ -51,7 +51,7 @@ ClamAV is memory consuming (more than 800MB for the virus signature database). I
 
 For e-mail accounts storage, my first thought was to use Object Storage but I was not able to find any Open-Source IMAP server. Then I have decided to go with a scalalable Block Storage solution (like Ceph-based OVH Block Storage).
 
-For SMTP output, IP reputation is very important. Default VM's IP seems not to be a convenient choice. My preference went to 'Static' IP (like an OVH Fail-Over IP). Another advantage is I could decide to replace the VM chile keeping the same IP.
+For SMTP output, IP reputation is very important. Default VM's IP seems not to be a convenient choice. My preference went to 'Static' IP (like an OVH Fail-Over IP). Another advantage is I could decide to replace the VM while keeping the same IP.
 
 ### Step by step, using OpenStack-based OVH Public Cloud
 
