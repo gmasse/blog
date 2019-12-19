@@ -99,8 +99,8 @@ favicon: /favicon.png
 ## Themes: https://hexo.io/themes/
 theme: minos
 open_graph:
-  twitter_id: GegAtOvh
-  twitter_site: https://twitter.com/gegatovh
+  twitter_id: gmasse
+  twitter_site: https://twitter.com/gmasse
 logo:
     text: Regain Control.
 article:
