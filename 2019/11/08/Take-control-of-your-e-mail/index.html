@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;ovh&#x2F;docs&#x2F;raw&#x2F;develop&#x2F;pages&#x2F;platform&#x2F;public-cloud&#x2F;buy_failover_ip&#x2F;images&#x2F;buyfailoverip1.png">
 <meta property="article:published_time" content="2019-11-08T17:13:02.000Z">
-<meta property="article:modified_time" content="2019-12-19T09:58:33.710Z">
+<meta property="article:modified_time" content="2020-01-08T17:06:52.877Z">
 <meta property="article:author" content="Germain Masse">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;ovh&#x2F;docs&#x2F;raw&#x2F;develop&#x2F;pages&#x2F;platform&#x2F;public-cloud&#x2F;buy_failover_ip&#x2F;images&#x2F;buyfailoverip1.png">
@@ -139,7 +139,7 @@
         <span class="column is-narrow">
             
             
-            11 minutes read (About 1600 words)
+            11 minutes read (About 1601 words)
         </span>
         
     </div>
@@ -170,7 +170,7 @@
 </blockquote>
 
 <h4 id="Advanced-configuration"><a href="#Advanced-configuration" class="headerlink" title="Advanced configuration"></a>Advanced configuration</h4><p>For e-mail accounts storage, my first thought was to use Object Storage but I was not able to find any Open-Source IMAP server. Then I have decided to go with a scalalable Block Storage solution (like Ceph-based OVH Block Storage).</p>
-<p>For SMTP output, IP reputation is very important. Default VM’s IP seems not to be a convenient choice. My preference went to ‘Static’ IP (like an OVH Fail-Over IP). Another advantage is I could decide to replace the VM while keeping the same IP.</p>
+<p>For SMTP output, IP reputation is very important. Default VM’s IP does not seem to be a convenient choice. My preference goes to ‘Static’ IP (like an OVH Fail-Over IP). Another advantage is I could decide to replace the VM while keeping the same IP.</p>
 <h3 id="Step-by-step-using-OpenStack-based-OVH-Public-Cloud"><a href="#Step-by-step-using-OpenStack-based-OVH-Public-Cloud" class="headerlink" title="Step by step, using OpenStack-based OVH Public Cloud"></a>Step by step, using OpenStack-based OVH Public Cloud</h3><p>I assume a new Public Cloud Project has been created, and you have downloaded the OpenRC environment file.<br>First, load the environment: <code>source openrc.sh</code>.</p>
 <h4 id="1-Instanciate-a-VM"><a href="#1-Instanciate-a-VM" class="headerlink" title="1. Instanciate a VM"></a>1. Instanciate a VM</h4><p>If needed, push your SSH public key to OpenStack region <code>openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey</code></p>
 <p>We can not purchase any IP without a running instance. So we will instanciate the VM without any OS:</p>
@@ -244,7 +244,7 @@
     <div class="container">
         <div class="columns content">
             <div class="column is-narrow has-text-centered">
-                &copy; 2019 Germain Masse&nbsp;
+                &copy; 2020 Germain Masse&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
