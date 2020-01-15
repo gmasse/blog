@@ -1,11 +1,19 @@
 ---
 title: Take control of your e-mail
 date: 2019-11-08 18:13:02
+updated: 2020-01-08 18:06:09
 tags:
+- Email
+- Docker
+- OpenStack
+- OVHcloud
 ---
 When it's time to talk about regaining control of personal data, e-mail are on the top of my list.
 
 I have never trusted Google to deal with my data (my photos, my e-mail, or my documents). Even if I admit Gmail offer a very convenient service and a wonderful anti-spam (thanks to all the data shared by [1.5 billion active users and their 10 millions of spam and malicious emails received every minute][1]).
+
+This guide will help you to recover control of your e-mail.
+<!-- more -->
 
 When your business relies on digital exchanges, your e-mail provider must be very reliable. A chance that the Simple Mail Transfer Protocol is robust, allowing your precious e-mail to be retransmitted in case of outage of a gateway. In fact, a gateway could be [off-line during days][2] before the e-mail would be returned to its sender.
 
