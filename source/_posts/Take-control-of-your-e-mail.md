@@ -8,6 +8,7 @@ tags:
 - OpenStack
 - OVHcloud
 ---
+{% img /blog/images/email.jpg '"Public Domain Image / CC0"' %}
 When it's time to talk about regaining control of personal data, e-mail are on the top of my list.
 
 I have never trusted Google to deal with my data (my photos, my e-mail, or my documents). Even if I admit Gmail offer a very convenient service and a wonderful anti-spam (thanks to all the data shared by [1.5 billion active users and their 10 millions of spam and malicious emails received every minute][1]).
