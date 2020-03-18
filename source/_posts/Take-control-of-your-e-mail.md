@@ -75,7 +75,7 @@ If needed, push your SSH public key to OpenStack region `openstack keypair creat
 We can not purchase any IP without a running instance. So we will instanciate the VM without any OS:
 {% codeblock lang:Bash line_number:false %}
 # Download cloudinit script that will help later to setup our VM
-curl -fsSL https://raw.githubusercontent.com/gmasse/emailgw/master/cloudinit
+curl -fsSLO https://raw.githubusercontent.com/gmasse/emailgw/master/cloudinit
 # Instanciate the VM
 openstack server create --flavor s1-4 --key-name mykey --user-data cloudinit --image "rescue-ovh" email
 {% endcodeblock %}
