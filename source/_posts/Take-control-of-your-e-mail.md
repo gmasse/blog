@@ -1,7 +1,7 @@
 ---
 title: Take control of your e-mail
 date: 2019-11-08 18:13:02
-updated: 2020-01-08 18:06:09
+updated: 2020-03-20 18:04:00
 tags:
 - Email
 - Docker
@@ -144,6 +144,12 @@ server:
     interface: 172.17.0.1
     access-control: 172.16.0.0/12 allow
     outgoing-interface: 1.2.3.4
+{% endcodeblock %}
+Configure Systemd to start Unbound after Docker service: `sudo systemctl edit unbound.service`:
+{% codeblock lang:plaintext %}
+[Unit]
+After=docker.service
+Wants=docker.service
 {% endcodeblock %}
 Reload service: `sudo systemctl reload unbound`.
 
