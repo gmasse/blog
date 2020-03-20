@@ -1,7 +1,7 @@
 ---
 title: Take control of your e-mail
 date: 2019-11-08 18:13:02
-updated: 2020-01-08 18:06:09
+updated: 2020-03-20 18:04:00
 tags:
 - Email
 - Docker
@@ -75,7 +75,7 @@ If needed, push your SSH public key to OpenStack region `openstack keypair creat
 We can not purchase any IP without a running instance. So we will instanciate the VM without any OS:
 {% codeblock lang:Bash line_number:false %}
 # Download cloudinit script that will help later to setup our VM
-curl -fsSL https://raw.githubusercontent.com/gmasse/emailgw/master/cloudinit
+curl -fsSLO https://raw.githubusercontent.com/gmasse/emailgw/master/cloudinit
 # Instanciate the VM
 openstack server create --flavor s1-4 --key-name mykey --user-data cloudinit --image "rescue-ovh" email
 {% endcodeblock %}
@@ -144,6 +144,12 @@ server:
     interface: 172.17.0.1
     access-control: 172.16.0.0/12 allow
     outgoing-interface: 1.2.3.4
+{% endcodeblock %}
+Configure Systemd to start Unbound after Docker service: `sudo systemctl edit unbound.service`:
+{% codeblock lang:plaintext %}
+[Unit]
+After=docker.service
+Wants=docker.service
 {% endcodeblock %}
 Reload service: `sudo systemctl reload unbound`.
 
