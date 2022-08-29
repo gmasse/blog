@@ -24,9 +24,9 @@
 <meta property="og:description" content="When it’s time to talk about regaining control of personal data, e-mail are on the top of my list. I have never trusted Google to deal with my data (my photos, my e-mail, or my documents). Even if I">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;gmasse.github.io&#x2F;blog&#x2F;images&#x2F;email.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;ovh&#x2F;docs&#x2F;raw&#x2F;develop&#x2F;pages&#x2F;platform&#x2F;public-cloud&#x2F;buy_failover_ip&#x2F;images&#x2F;buyfailoverip1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;ovh&#x2F;docs&#x2F;raw&#x2F;develop&#x2F;pages&#x2F;platform&#x2F;public-cloud&#x2F;buy_failover_ip&#x2F;images&#x2F;buyfailoverip1-2021.png">
 <meta property="article:published_time" content="2019-11-08T17:13:02.000Z">
-<meta property="article:modified_time" content="2020-03-20T17:04:00.000Z">
+<meta property="article:modified_time" content="2022-08-29T16:29:00.000Z">
 <meta property="article:author" content="Germain Masse">
 <meta property="article:tag" content="Email">
 <meta property="article:tag" content="Docker">
@@ -144,7 +144,7 @@
         <span class="column is-narrow">
             
             
-            11 minutes read (About 1647 words)
+            11 minutes read (About 1674 words)
         </span>
         
     </div>
@@ -188,7 +188,7 @@
 </blockquote>
 
 
-<h4 id="2-Purchase-a-‘Static’-IP"><a href="#2-Purchase-a-‘Static’-IP" class="headerlink" title="2. Purchase a ‘Static’ IP"></a>2. Purchase a ‘Static’ IP</h4><p>Using Customer Interface:<br><img src="https://github.com/ovh/docs/raw/develop/pages/platform/public-cloud/buy_failover_ip/images/buyfailoverip1.png" alt="Screenshot"></p>
+<h4 id="2-Purchase-a-‘Static’-IP"><a href="#2-Purchase-a-‘Static’-IP" class="headerlink" title="2. Purchase a ‘Static’ IP"></a>2. Purchase a ‘Static’ IP</h4><p>Using Customer Interface (you can follow the <a href="https://docs.ovh.com/ie/en/public-cloud/buy-a-failover-ip/" target="_blank" rel="noopener">guide</a>):<br><img src="https://github.com/ovh/docs/raw/develop/pages/platform/public-cloud/buy_failover_ip/images/buyfailoverip1-2021.png" alt="Screenshot"></p>
 <p>And assign it to the VM named <code>email</code>.</p>
 <h4 id="3-Add-Block-Storage"><a href="#3-Add-Block-Storage" class="headerlink" title="3. Add Block Storage"></a>3. Add Block Storage</h4><p>There are two types of block storage: classic and high-speed (<code>openstack volume type list</code>). Performances of classic storage seems acceptable for an entry level mail gateway.</p>
 <p>Create a 10GB volume and attache the volume to the instance:</p>
@@ -227,9 +227,9 @@
 
 
 <h4 id="10-Configure-the-container"><a href="#10-Configure-the-container" class="headerlink" title="10. Configure the container"></a>10. Configure the container</h4><p>Download the configuration files:</p>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo mkdir /mnt/mail/docker-mailserver</span><br><span class="line">sudo chown ubuntu:ubuntu /mnt/mail/docker-mailserver</span><br><span class="line">ln -s /mnt/mail/docker-mailserver/ ~/docker-mailserver</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/docker-mailserver/</span><br><span class="line">curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/docker-compose.yml</span><br><span class="line">curl -o env-mailserver https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/env-mailserver</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo mkdir /mnt/mail/docker-mailserver</span><br><span class="line">sudo chown ubuntu:ubuntu /mnt/mail/docker-mailserver</span><br><span class="line">ln -s /mnt/mail/docker-mailserver/ ~/docker-mailserver</span><br><span class="line"><span class="hljs-built_in">cd</span> ~/docker-mailserver/</span><br><span class="line">curl -o setup.sh https://raw.githubusercontent.com/docker-mailserver/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/docker-compose.yml</span><br><span class="line">curl -o env-mailserver https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/env-mailserver</span><br></pre></td></tr></table></figure>
 <p>Update <code>env-mailserver</code> according to your setup (<code>OVERRIDE_HOSTNAME</code> and <code>POSTMASTER_ADDRESS</code>).</p>
-<blockquote class="colorquote info"><p>By default, <a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver</a> uses <code>Maildir</code> format for mailboxes. This is a very common format where each e-mail is stored in one file. For better performances and/or to use <a href="https://wiki.dovecot.org/MailboxFormat/dbox#Alternate_storage" target="_blank" rel="noopener">Alternate storage</a>, you can rely on Dovecot <code>sdbox</code> and <code>mdbox</code> (supported since the merge of my <a href="https://github.com/tomav/docker-mailserver/pull/1314" target="_blank" rel="noopener">pull request</a>).</p>
+<blockquote class="colorquote info"><p>By default, <a href="https://github.com/docker-mailserver/docker-mailserver" target="_blank" rel="noopener">docker-mailserver</a> uses <code>Maildir</code> format for mailboxes. This is a very common format where each e-mail is stored in one file. For better performances and/or to use <a href="https://wiki.dovecot.org/MailboxFormat/dbox#Alternate_storage" target="_blank" rel="noopener">Alternate storage</a>, you can rely on Dovecot <code>sdbox</code> and <code>mdbox</code> (supported since the merge of my <a href="https://github.com/tomav/docker-mailserver/pull/1314" target="_blank" rel="noopener">pull request</a>).</p>
 </blockquote>
 
 <p>Update and save <code>.env</code> file:</p>
@@ -237,7 +237,7 @@
 
 
 <h4 id="11-Run-it"><a href="#11-Run-it" class="headerlink" title="11. Run it"></a>11. Run it</h4><p>Create at least one e-mail account: <code>sudo ./setup.sh email add &lt;user@domain&gt; [&lt;password&gt;]</code><br>Then launch the container: <code>sudo docker-compose up -d mail</code></p>
-<h4 id="12-To-go-further"><a href="#12-To-go-further" class="headerlink" title="12. To go further"></a>12. To go further</h4><p><a href="https://github.com/tomav/docker-mailserver#generate-dkim-keys" target="_blank" rel="noopener">Generate DKIM keys</a><br><a href="https://github.com/tomav/docker-mailserver#restart-and-update-the-container" target="_blank" rel="noopener">Update the container</a></p>
+<h4 id="12-To-go-further"><a href="#12-To-go-further" class="headerlink" title="12. To go further"></a>12. To go further</h4><p><a href="https://docker-mailserver.github.io/docker-mailserver/edge/config/best-practices/dkim/" target="_blank" rel="noopener">Generate DKIM keys</a><br><a href="https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/maintenance/update-and-cleanup/" target="_blank" rel="noopener">Automatic update of the container</a></p>
 <h2 id="To-be-continued…"><a href="#To-be-continued…" class="headerlink" title="To be continued…"></a>To be continued…</h2><p>Let’s encrypt SSL auto-renew<br>Coudinit: add storage and dns configuration<br>Tiered storage, using Dovecot Alternate storage feature: recent emails on high-speed block storage, archives on normal speed<br>Volume (auto?) resize<br>IPv6<br>E-mail configuration auto-discover</p>
 
     
