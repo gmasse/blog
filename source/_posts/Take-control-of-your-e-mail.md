@@ -1,7 +1,7 @@
 ---
 title: Take control of your e-mail
 date: 2019-11-08 18:13:02
-updated: 2020-03-20 18:04:00
+updated: 2022-08-29 18:29:00
 tags:
 - Email
 - Docker
@@ -86,8 +86,8 @@ The [cloudinit script](https://github.com/gmasse/emailgw/blob/master/cloudinit) 
 
 #### 2. Purchase a 'Static' IP
 
-Using Customer Interface:
-![Screenshot](https://github.com/ovh/docs/raw/develop/pages/platform/public-cloud/buy_failover_ip/images/buyfailoverip1.png)
+Using Customer Interface (you can follow the [guide](https://docs.ovh.com/ie/en/public-cloud/buy-a-failover-ip/)):
+![Screenshot](https://github.com/ovh/docs/raw/develop/pages/platform/public-cloud/buy_failover_ip/images/buyfailoverip1-2021.png)
 
 And assign it to the VM named `email`.
 
@@ -192,13 +192,13 @@ sudo mkdir /mnt/mail/docker-mailserver
 sudo chown ubuntu:ubuntu /mnt/mail/docker-mailserver
 ln -s /mnt/mail/docker-mailserver/ ~/docker-mailserver
 cd ~/docker-mailserver/
-curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh
+curl -o setup.sh https://raw.githubusercontent.com/docker-mailserver/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh
 curl -o docker-compose.yml https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/docker-compose.yml
 curl -o env-mailserver https://raw.githubusercontent.com/gmasse/emailgw/master/docker-mailserver/env-mailserver
 {% endcodeblock %}
 Update `env-mailserver` according to your setup (`OVERRIDE_HOSTNAME` and `POSTMASTER_ADDRESS`).
 {% colorquote info %}
-By default, [docker-mailserver](https://github.com/tomav/docker-mailserver) uses `Maildir` format for mailboxes. This is a very common format where each e-mail is stored in one file. For better performances and/or to use [Alternate storage](https://wiki.dovecot.org/MailboxFormat/dbox#Alternate_storage), you can rely on Dovecot `sdbox` and `mdbox` (supported since the merge of my [pull request](https://github.com/tomav/docker-mailserver/pull/1314)).
+By default, [docker-mailserver](https://github.com/docker-mailserver/docker-mailserver) uses `Maildir` format for mailboxes. This is a very common format where each e-mail is stored in one file. For better performances and/or to use [Alternate storage](https://wiki.dovecot.org/MailboxFormat/dbox#Alternate_storage), you can rely on Dovecot `sdbox` and `mdbox` (supported since the merge of my [pull request](https://github.com/tomav/docker-mailserver/pull/1314)).
 {% endcolorquote %}
 
 Update and save `.env` file:
@@ -218,8 +218,8 @@ Then launch the container: `sudo docker-compose up -d mail`
 
 #### 12. To go further
 
-[Generate DKIM keys](https://github.com/tomav/docker-mailserver#generate-dkim-keys)
-[Update the container](https://github.com/tomav/docker-mailserver#restart-and-update-the-container)
+[Generate DKIM keys](https://docker-mailserver.github.io/docker-mailserver/edge/config/best-practices/dkim/)
+[Automatic update of the container](https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/maintenance/update-and-cleanup/)
 
 
 ## To be continued...
