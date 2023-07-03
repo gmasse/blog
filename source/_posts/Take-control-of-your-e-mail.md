@@ -87,7 +87,7 @@ The [cloudinit script](https://github.com/gmasse/emailgw/blob/master/cloudinit) 
 #### 2. Purchase a 'Static' IP
 
 Using Customer Interface (you can follow the [guide](https://docs.ovh.com/ie/en/public-cloud/buy-a-failover-ip/)):
-![Screenshot](https://github.com/ovh/docs/raw/develop/pages/platform/public-cloud/buy_failover_ip/images/buyfailoverip1-2021.png)
+![Screenshot](https://help.ovhcloud.com/platform-network-services-additional-ip-buy-images-buyaddip_01.png)
 
 And assign it to the VM named `email`.
 
